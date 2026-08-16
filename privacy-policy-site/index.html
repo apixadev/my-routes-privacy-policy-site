@@ -1,127 +1,352 @@
-# Политика конфиденциальности приложения «Мои маршруты»
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy Policy for the My Routes Android application by Apixa.">
+  <meta name="robots" content="index, follow">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <link rel="canonical" href="https://apixadev.github.io/my-routes-privacy-policy-site/">
+  <title>My Routes Privacy Policy | Политика конфиденциальности</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #f4f7f5;
+      --surface: #ffffff;
+      --text: #18221d;
+      --muted: #5d6a63;
+      --accent: #176b45;
+      --border: #d9e2dc;
+      --code: #edf3ef;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
 
-- **Дата вступления в силу:** 14 августа 2026 г.
-- **Разработчик:** Apixa
-**Контакт по вопросам конфиденциальности:** support@apixa.ru
+    * {
+      box-sizing: border-box;
+    }
 
-Приложение «Мои маршруты» работает без регистрации, рекламы, удалённой аналитики и облачного
-профиля. Ниже описано, какие данные нужны приложению и как они обрабатываются.
+    html {
+      scroll-behavior: smooth;
+    }
 
-## Геопозиция и маршруты
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+    }
 
-С разрешения пользователя приложение получает точную или примерную геопозицию, высоту, скорость
-и время. Эти данные используются для записи GPS-трека, расчёта дистанции и скорости, отображения
-позиции на карте и контроля отклонения от выбранного маршрута.
+    main {
+      width: min(880px, calc(100% - 32px));
+      margin: 32px auto;
+      padding: clamp(24px, 5vw, 56px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 14px 38px rgb(20 48 34 / 8%);
+    }
 
-Во время записи, которую пользователь явно запускает кнопкой GO, приложение работает как
-foreground service с геолокацией. Поэтому маршрут продолжает записываться при выключенном экране
-или когда открыто другое приложение, а Android показывает постоянное системное уведомление.
-Запись прекращается после завершения маршрута пользователем. Приложение не запрашивает разрешение
-на постоянный фоновый доступ к геопозиции (`ACCESS_BACKGROUND_LOCATION`).
+    h1,
+    h2 {
+      line-height: 1.25;
+    }
 
-## Локальное хранение
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 6vw, 3rem);
+      letter-spacing: -0.03em;
+    }
 
-GPS-треки, импортированные маршруты, настройки и локальный журнал ошибок хранятся в памяти
-устройства. Данные треков защищены шифрованием AES-256, ключ хранится средствами Android Keystore.
-Приложение не загружает маршруты на сервер Apixa.
+    h2 {
+      margin: 36px 0 10px;
+      font-size: 1.35rem;
+    }
 
-## Карты и сетевые сервисы
+    p,
+    ul {
+      margin: 10px 0;
+    }
 
-Для отображения онлайн-карт приложение по HTTPS загружает тайлы со следующих сервисов:
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
 
-- OpenStreetMap — `tile.openstreetmap.org`;
-- CyclOSM — `tile-cyclosm.openstreetmap.fr`.
+    code {
+      padding: 0.12em 0.35em;
+      background: var(--code);
+      border-radius: 5px;
+      font-size: 0.9em;
+      overflow-wrap: anywhere;
+    }
 
-Эти сервисы получают обычные данные сетевого запроса, включая IP-адрес и координаты запрошенного
-участка карты. Их обработка регулируется правилами соответствующего сервиса. Если пользователь
-указывает URL для загрузки MBTiles, сервер по этому адресу также получает сетевой запрос.
+    .language-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
 
-Пользователь может импортировать локальный MBTiles-файл и пользоваться картой без сетевых запросов
-к провайдерам онлайн-тайлов.
+    .language-nav a {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 650;
+    }
 
-## Экспорт и передача данных
+    .summary {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
 
-GPX-файл передаётся другому приложению или сервису только после явного нажатия «Экспорт» и выбора
-получателя в системном меню Android «Поделиться». После передачи обработка файла регулируется
-политикой выбранного пользователем приложения или сервиса.
+    .metadata {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 4px 16px;
+      margin: 20px 0 26px;
+    }
 
-Для экспорта создаётся временная копия GPX в кэше приложения. Она может сохраняться до очистки
-кэша Android или данных приложения.
+    .metadata dt {
+      color: var(--muted);
+      font-weight: 650;
+    }
 
-## Срок хранения и удаление
+    .metadata dd {
+      margin: 0;
+    }
 
-Маршруты хранятся до удаления пользователем. Доступны следующие способы удаления:
+    .language-section + .language-section {
+      margin-top: 64px;
+      padding-top: 56px;
+      border-top: 2px solid var(--border);
+    }
 
-- удалить отдельный маршрут в списке маршрутов;
-- выбрать «Удалить все данные» в настройках приложения;
-- удалить данные приложения или само приложение средствами Android.
+    footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
 
-Разработчик не может восстановить удалённые локальные маршруты, поскольку их копии не хранятся
-на сервере Apixa.
+    @media (max-width: 560px) {
+      main {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
 
-## Безопасность
+      .metadata {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
 
-Локальные треки защищены шифрованием AES-256. Сетевые запросы приложения выполняются по HTTPS.
-Пользователю не следует экспортировать маршрут в приложение или сервис, которому он не доверяет.
+      .metadata dd + dt {
+        margin-top: 10px;
+      }
+    }
 
-## Изменения политики
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #101713;
+        --surface: #17211b;
+        --text: #eef5f0;
+        --muted: #b3c0b8;
+        --accent: #77d6a4;
+        --border: #34433a;
+        --code: #25332a;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="language-nav" aria-label="Language selection">
+      <a href="#english" lang="en">English</a>
+      <a href="#russian" lang="ru">Русский</a>
+    </nav>
 
-Если способы обработки данных изменятся, текст политики и дата её вступления в силу будут
-обновлены. Вопросы можно направлять на support@apixa.ru.
+    <article id="english" class="language-section" lang="en">
+      <h1>My Routes Privacy Policy</h1>
 
----
+      <dl class="metadata">
+        <dt>Effective date</dt>
+        <dd><time datetime="2026-08-14">August 14, 2026</time></dd>
+        <dt>Developer</dt>
+        <dd>Apixa</dd>
+        <dt>Privacy contact</dt>
+        <dd><a href="mailto:support@apixa.ru">support@apixa.ru</a></dd>
+      </dl>
 
-# My Routes Privacy Policy
+      <p class="summary">
+        My Routes works without registration, advertising, remote analytics, or a cloud profile.
+      </p>
 
-- **Effective date:** August 14, 2026
-- **Developer:** Apixa
-**Privacy contact:** support@apixa.ru
+      <h2>Location and routes</h2>
+      <p>
+        With the user's permission, the app accesses precise or approximate location, altitude,
+        speed, and time. This data is used to record GPS tracks, calculate distance and speed,
+        display position on the map, and detect deviation from a selected route.
+      </p>
+      <p>
+        During a recording explicitly started by the user with the GO button, the app runs a
+        location foreground service. This lets recording continue while the screen is off or
+        another app is open, and Android displays an ongoing system notification. Recording stops
+        when the user finishes the route. The app does not request all-the-time background location
+        access (<code>ACCESS_BACKGROUND_LOCATION</code>).
+      </p>
 
-My Routes works without registration, advertising, remote analytics, or a cloud profile.
+      <h2>On-device storage</h2>
+      <p>
+        GPS tracks, imported routes, settings, and the local crash log are stored on the device.
+        Track data is protected with AES-256 encryption, with the key protected by Android
+        Keystore. The app does not upload routes to an Apixa server.
+      </p>
 
-## Location and routes
+      <h2>Maps and network services</h2>
+      <p>
+        Online map tiles are loaded over HTTPS from OpenStreetMap
+        (<code>tile.openstreetmap.org</code>) or CyclOSM
+        (<code>tile-cyclosm.openstreetmap.fr</code>). These providers receive ordinary
+        network-request data, including the IP address and coordinates of the requested map area.
+        Their own policies govern this handling. If the user supplies a URL for downloading an
+        MBTiles file, that server also receives the request.
+      </p>
+      <p>
+        The user can import a local MBTiles file and use it without requests to online tile
+        providers.
+      </p>
 
-With the user's permission, the app accesses precise or approximate location, altitude, speed,
-and time. This data is used to record GPS tracks, calculate distance and speed, display position on
-the map, and detect deviation from a selected route.
+      <h2>Export and sharing</h2>
+      <p>
+        A GPX file is sent to another app or service only after the user explicitly taps Export and
+        selects a destination in Android's share sheet. The selected recipient's policy governs
+        subsequent processing. A temporary GPX copy may remain in the app cache until Android
+        clears it.
+      </p>
 
-During a recording explicitly started by the user with the GO button, the app runs a location
-foreground service. This lets recording continue while the screen is off or another app is open,
-and Android displays an ongoing system notification. Recording stops when the user finishes the
-route. The app does not request all-the-time background location access
-(`ACCESS_BACKGROUND_LOCATION`).
+      <h2>Retention and deletion</h2>
+      <p>
+        Routes remain until the user deletes them. Individual routes can be removed from the route
+        list, all local content can be erased with Clear All Data, and Android can remove all
+        content by clearing the app's data or uninstalling it. Apixa cannot restore deleted routes
+        because it keeps no server copy.
+      </p>
 
-## On-device storage
+      <h2>Security and changes</h2>
+      <p>
+        Local tracks are protected with AES-256 encryption, and app network requests use HTTPS.
+        Users should not export a route to an app or service they do not trust. If data handling
+        changes, this policy and its effective date will be updated. Questions can be sent to
+        <a href="mailto:support@apixa.ru">support@apixa.ru</a>.
+      </p>
+    </article>
 
-GPS tracks, imported routes, settings, and the local crash log are stored on the device. Track data
-is protected with AES-256 encryption, with the key protected by Android Keystore. The app does not
-upload routes to an Apixa server.
+    <article id="russian" class="language-section" lang="ru">
+      <h1>Политика конфиденциальности приложения «Мои маршруты»</h1>
 
-## Maps and network services
+      <dl class="metadata">
+        <dt>Дата вступления в силу</dt>
+        <dd><time datetime="2026-08-14">14 августа 2026 г.</time></dd>
+        <dt>Разработчик</dt>
+        <dd>Apixa</dd>
+        <dt>Контакт по вопросам конфиденциальности</dt>
+        <dd><a href="mailto:support@apixa.ru">support@apixa.ru</a></dd>
+      </dl>
 
-Online map tiles are loaded over HTTPS from OpenStreetMap (`tile.openstreetmap.org`) or CyclOSM
-(`tile-cyclosm.openstreetmap.fr`). These providers receive ordinary network-request data, including
-the IP address and coordinates of the requested map area. Their own policies govern this handling.
-If the user supplies a URL for downloading an MBTiles file, that server also receives the request.
+      <p class="summary">
+        Приложение «Мои маршруты» работает без регистрации, рекламы, удалённой аналитики и
+        облачного профиля. Ниже описано, какие данные нужны приложению и как они обрабатываются.
+      </p>
 
-The user can import a local MBTiles file and use it without requests to online tile providers.
+      <h2>Геопозиция и маршруты</h2>
+      <p>
+        С разрешения пользователя приложение получает точную или примерную геопозицию, высоту,
+        скорость и время. Эти данные используются для записи GPS-трека, расчёта дистанции и
+        скорости, отображения позиции на карте и контроля отклонения от выбранного маршрута.
+      </p>
+      <p>
+        Во время записи, которую пользователь явно запускает кнопкой GO, приложение работает как
+        foreground service с геолокацией. Поэтому маршрут продолжает записываться при выключенном
+        экране или когда открыто другое приложение, а Android показывает постоянное системное
+        уведомление. Запись прекращается после завершения маршрута пользователем. Приложение не
+        запрашивает разрешение на постоянный фоновый доступ к геопозиции
+        (<code>ACCESS_BACKGROUND_LOCATION</code>).
+      </p>
 
-## Export and sharing
+      <h2>Локальное хранение</h2>
+      <p>
+        GPS-треки, импортированные маршруты, настройки и локальный журнал ошибок хранятся в памяти
+        устройства. Данные треков защищены шифрованием AES-256, ключ хранится средствами Android
+        Keystore. Приложение не загружает маршруты на сервер Apixa.
+      </p>
 
-A GPX file is sent to another app or service only after the user explicitly taps Export and selects
-a destination in Android's share sheet. The selected recipient's policy governs subsequent
-processing. A temporary GPX copy may remain in the app cache until Android clears it.
+      <h2>Карты и сетевые сервисы</h2>
+      <p>Для отображения онлайн-карт приложение по HTTPS загружает тайлы со следующих сервисов:</p>
+      <ul>
+        <li>OpenStreetMap — <code>tile.openstreetmap.org</code>;</li>
+        <li>CyclOSM — <code>tile-cyclosm.openstreetmap.fr</code>.</li>
+      </ul>
+      <p>
+        Эти сервисы получают обычные данные сетевого запроса, включая IP-адрес и координаты
+        запрошенного участка карты. Их обработка регулируется правилами соответствующего сервиса.
+        Если пользователь указывает URL для загрузки MBTiles, сервер по этому адресу также получает
+        сетевой запрос.
+      </p>
+      <p>
+        Пользователь может импортировать локальный MBTiles-файл и пользоваться картой без сетевых
+        запросов к провайдерам онлайн-тайлов.
+      </p>
 
-## Retention and deletion
+      <h2>Экспорт и передача данных</h2>
+      <p>
+        GPX-файл передаётся другому приложению или сервису только после явного нажатия «Экспорт» и
+        выбора получателя в системном меню Android «Поделиться». После передачи обработка файла
+        регулируется политикой выбранного пользователем приложения или сервиса.
+      </p>
+      <p>
+        Для экспорта создаётся временная копия GPX в кэше приложения. Она может сохраняться до
+        очистки кэша Android или данных приложения.
+      </p>
 
-Routes remain until the user deletes them. Individual routes can be removed from the route list,
-all local content can be erased with Clear All Data, and Android can remove all content by clearing
-the app's data or uninstalling it. Apixa cannot restore deleted routes because it keeps no server
-copy.
+      <h2>Срок хранения и удаление</h2>
+      <p>Маршруты хранятся до удаления пользователем. Доступны следующие способы удаления:</p>
+      <ul>
+        <li>удалить отдельный маршрут в списке маршрутов;</li>
+        <li>выбрать «Удалить все данные» в настройках приложения;</li>
+        <li>удалить данные приложения или само приложение средствами Android.</li>
+      </ul>
+      <p>
+        Разработчик не может восстановить удалённые локальные маршруты, поскольку их копии не
+        хранятся на сервере Apixa.
+      </p>
 
-## Security and changes
+      <h2>Безопасность</h2>
+      <p>
+        Локальные треки защищены шифрованием AES-256. Сетевые запросы приложения выполняются по
+        HTTPS. Пользователю не следует экспортировать маршрут в приложение или сервис, которому он
+        не доверяет.
+      </p>
 
-Local tracks are protected with AES-256 encryption, and app network requests use HTTPS. Users
-should not export a route to an app or service they do not trust. If data handling changes, this
-policy and its effective date will be updated. Questions can be sent to support@apixa.ru.
+      <h2>Изменения политики</h2>
+      <p>
+        Если способы обработки данных изменятся, текст политики и дата её вступления в силу будут
+        обновлены. Вопросы можно направлять на
+        <a href="mailto:support@apixa.ru">support@apixa.ru</a>.
+      </p>
+    </article>
 
+    <footer>
+      © 2026 Apixa · My Routes
+    </footer>
+  </main>
+</body>
+</html>
